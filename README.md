@@ -1,7 +1,8 @@
 # ViBraille
 
+A portable Braille reader that translates text into Braille characters, which are then represented physically using solenoids for tactile feedback. The system uses a camera to capture images of text, which are processed using Optical Character Recognition (OCR) software to convert the visual text into digital text. This text is then translated into Braille, and an array of solenoids, controlled by an Arduino microcontroller, is actuated to represent the Braille characters. The solenoids create raised dots that can be felt by a user, mimicking the Braille reading experience. The device aims to provide a compact, efficient, and accessible way for visually impaired individuals to read printed text in real-time. Additionally, an ultrasonic sensor is incorporated to ensure the text is at an optimal distance for image capture, enhancing the system's usability.
 
-Overview of the System Workflow:
+**Overview of the System Workflow:**
 
 Image Capture: The camera takes a picture of the text.
 
