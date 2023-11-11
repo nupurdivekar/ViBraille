@@ -2,6 +2,7 @@
 
 
 Overview of the System Workflow:
+
 Image Capture: The camera takes a picture of the text.
 OCR Processing: The image is processed by OCR software to extract the text.
 Text to Braille Translation: The text is converted into Braille code.
