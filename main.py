@@ -5,6 +5,23 @@ import pytesseract
 from PIL import Image
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
+from picamera import PiCamera
+
+# Initialize camera
+camera = PiCamera()
+
+# Directory to store images
+image_dir = "/Users/<username>/Desktop/ViBraille/images"  # Replace <username> with your actual username
+os.makedirs(image_dir, exist_ok=True)
+
+# Function to capture an image
+def capture_image(image_name):
+    image_path = os.path.join(image_dir, image_name)
+    camera.start_preview()
+    time.sleep(2)  # Camera warm-up time
+    camera.capture(image_path)
+    camera.stop_preview()
+    return image_path
 
 # OCR and Braille Conversion Setup
 pytesseract.pytesseract.tesseract_cmd = r'/opt/homebrew/bin/tesseract'  # Update this path
@@ -29,14 +46,6 @@ def text_to_braille(text):
         braille_string += braille_dict.get(char, '000000')  # Default to '000000' for unknown characters
     return braille_string
 
-
-# def process_image(image_path):
-#     print("Processing image:", image_path)
-#     text = pytesseract.image_to_string(Image.open(image_path))
-#     print("Extracted text:", text)
-#     braille = text_to_braille(text)
-#     print("Braille representation:", braille)
-#     arduino_serial.write(braille.encode())
 def process_image(image_path):
     print("Processing image:", image_path)
     text = pytesseract.image_to_string(Image.open(image_path))
