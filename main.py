@@ -55,5 +55,5 @@ class Handler(FileSystemEventHandler):
             process_image(event.src_path)
 
 # Initialize and run the watcher
-watcher = Watcher("path_to_your_folder")
+watcher = Watcher("/Users/aarshmehta/Desktop/ViBraille/images")
 watcher.run()
