@@ -1,0 +1,10 @@
+Statement Ifp,theng.
+
+Converse Ifq,thenp.
+
+If not p , then not
+Inverse P 4
+
+If not g , then not
+Contrapositive q P
+
