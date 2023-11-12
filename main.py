@@ -7,7 +7,7 @@ from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
 # Tesseract executable path
-pytesseract.pytesseract.tesseract_cmd = r'path_to_tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = r'/opt/homebrew/bin/tesseract'
 
 # Serial port configuration
 ser = serial.Serial('COM_PORT', 9600)  # Update COM port as needed
