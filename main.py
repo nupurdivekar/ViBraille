@@ -11,7 +11,7 @@ from picamera import PiCamera
 camera = PiCamera()
 
 # Directory to store images
-image_dir = "/Users/<username>/Desktop/ViBraille/images"  # Replace <username> with your actual username
+image_dir = "pi/ViBraille/images"  
 os.makedirs(image_dir, exist_ok=True)
 
 # Function to capture an image
