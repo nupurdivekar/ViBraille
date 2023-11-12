@@ -19,7 +19,6 @@ braille_dict = {
     'y': '110111', 'z': '100111',
     # Add more mappings for numbers and punctuation if needed.
 }
-
 # Serial Communication Setup
 arduino_serial = serial.Serial(port='/dev/tty.usbmodem1101', baudrate=9600, timeout=1)
 time.sleep(2)  # Wait for connection to establish
@@ -28,13 +27,12 @@ def text_to_braille(text):
     return ''.join(braille_dict.get(char, '000000') for char in text.lower())
 
 def process_image(image_path):
-    print("Processing image:", image_path)  # Print the image path being processed
+    print("Processing image:", image_path)
     text = pytesseract.image_to_string(Image.open(image_path))
-    print("Extracted text:", text)  # Print the extracted text
+    print("Extracted text:", text)
     braille = text_to_braille(text)
-    print("Braille representation:", braille)  # Print the Braille representation
-    arduino_serial.write(braille.encode())  # Send Braille to Arduino
-
+    print("Braille representation:", braille)
+    arduino_serial.write(braille.encode())
 
 class Watcher:
     def __init__(self, directory_to_watch):
@@ -54,28 +52,14 @@ class Watcher:
 
 class Handler(FileSystemEventHandler):
     @staticmethod
-    def on_any_event(event):
-        print(f"Event detected: {event}")  # This line will print any event detected
-        if event.is_directory:
-            return None
-        elif event.event_type == 'created':
+    def on_created(event):
+        if not event.is_directory and event.src_path.lower().endswith(('.png', '.jpg', '.jpeg', '.webp', '.bmp', '.gif')):
+            print(f"New image file detected: {event.src_path}")
             process_image(event.src_path)
 
-
-# # Initialize and run the watcher
+# Initialize and run the watcher
 watcher = Watcher("/Users/aarshmehta/Desktop/ViBraille/images")
-watcher.run()
 try:
-    watcher = Watcher("/Users/aarshmehta/Desktop/ViBraille/images")
     watcher.run()
 except Exception as e:
     print(f"An error occurred: {e}")
-
-def process_image(image_path):
-    print("Processing image:", image_path)  # Print the image path being processed
-    text = pytesseract.image_to_string(Image.open(image_path))
-    print("Extracted text:", text)  # Print the extracted text
-    braille = text_to_braille(text)
-    print("Braille representation:", braille)  # Print the Braille representation
-    arduino_serial.write(braille.encode())  # Send Braille to Arduino
-#process_image("/Users/aarshmehta/Desktop/ViBraille/images/istockphoto-1227331821-612x612.jpg")  # Update with a test image path
