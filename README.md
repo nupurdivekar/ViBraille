@@ -1,5 +1,5 @@
 # ViBraille 
-## A Project By Nupur Divekar, Aarsh Mehta, and Krish Agarwal
+A Project By Nupur Divekar, Aarsh Mehta, and Krish Agarwal
 
 ## Project Description
 This project aims to create an accessible tool for converting printed text into Braille. Utilizing a combination of OCR (Optical Character Recognition) and a custom-built Braille sensation machine, this project offers a unique solution for visually impaired individuals to read printed material. The system uses a Raspberry Pi camera to capture images of text, processes the text via OCR on the Raspberry Pi, converts it into Braille representation, and then actuates solenoids in a Braille display to render the text tactilely.
@@ -33,4 +33,10 @@ This project aims to create an accessible tool for converting printed text into 
 3. **Run the Python Script on Raspberry Pi**: Execute the script on the Raspberry Pi to start the OCR process. The script captures images using the Raspberry Pi camera, processes these images, extracts the text, and converts it to Braille.
 4. **Image Processing and Braille Conversion**: The Raspberry Pi 2(along with its camera module) captures, processes images in real-time, extracts text, and converts it into Braille representation in binary.
 5. **Braille Display Activation**: The Braille code is sent from the Raspberry Pi to the Arduino, which actuates the solenoids to display the text in Braille.
-6. **Interact with the Braille Display**: Users can read the tactile Braille output, which corresponds to the printed text.
+6. **Interact with the Braille Display**: Users can read the tactile Braille output in a 2x3 grid(standard braille), which corresponds to the printed text. 
+
+## Hardware Showcase
+![IMG_0745](https://github.com/nupurdivekar/ViBraille/assets/113206841/1014576d-52d6-465d-b3f5-4fe48e2852ab)
+
+## Braile Dictionary
+![braille-alphabet-overview](https://github.com/nupurdivekar/ViBraille/assets/113206841/8a6ca300-2bc6-4a8f-a528-7005f2e12c22)
